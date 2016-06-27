@@ -1,0 +1,26 @@
+{
+  "name": "node-gtmetrix",
+  "version": "1.0.0",
+  "description": "网站性能和速度测试",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/lovetingyuan/node-gtmetrix.git"
+  },
+  "keywords": [
+    "gtmetrix",
+    "website",
+    "speed",
+    "test",
+    "performance"
+  ],
+  "author": "tingyuan (1932294867@qq.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lovetingyuan/node-gtmetrix/issues"
+  },
+  "homepage": "https://github.com/lovetingyuan/node-gtmetrix#readme"
+}
