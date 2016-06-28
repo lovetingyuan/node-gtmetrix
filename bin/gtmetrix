@@ -1,8 +1,19 @@
+#! /usr/bin/env node
 
-	'use strict';
-	var gtmetrix = require('../lib/gtmetrix');
-	console.log(process.argv);
-    console.log('Getting a test report, please wait...');
-	gtmetrix('https://baidu.com', function(file) {
-		console.log('done! the report is ' + file);
-	});
+'use strict';
+var gtmetrix = require('../lib/gtmetrix');
+function testUrl(url) {
+	url = url.trim().replace(/ /g, '');
+	return (/^http(s)?:\/\/[\s\S]+\.[\s\S]+$/.test(url) && url.indexOf('.') > 0) ? url : false;
+}
+var url = testUrl(process.argv[2]);
+if(!url) {
+	console.log('invalid url');
+	console.log('usage: node-gtmetrix url_to_test');
+	return;
+}
+console.log('Getting a test report for ' + url + ', please wait...');
+gtmetrix(url, function(reportUrl, file) {
+	console.log('Done! the report is in ' + process.cwd() + '\\' + file);
+	console.log('Ctrl+click to open it.');
+});

@@ -1,6 +1,6 @@
 {
   "name": "node-gtmetrix",
-  "version": "1.0.4",
+  "version": "1.1.1",
   "description": "网站性能和速度测试",
   "main": "./lib/gtmetrix.js",
   "scripts": {
