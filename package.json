@@ -1,8 +1,8 @@
 {
   "name": "node-gtmetrix",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "网站性能和速度测试",
-  "main": "index.js",
+  "main": "./lib/gtmetrix.js",
   "scripts": {
     "test": "node index"
   },
@@ -22,5 +22,6 @@
   "bugs": {
     "url": "https://github.com/lovetingyuan/node-gtmetrix/issues"
   },
-  "homepage": "https://github.com/lovetingyuan/node-gtmetrix#readme"
+  "homepage": "https://github.com/lovetingyuan/node-gtmetrix#readme",
+  "bin": { "node-gtmetrix": "./bin/gtmetrix" }
 }
