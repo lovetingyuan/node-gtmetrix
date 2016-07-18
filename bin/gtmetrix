@@ -3,8 +3,8 @@
 'use strict';
 var gtmetrix = require('../lib/gtmetrix');
 function testUrl(url) {
-	url = url.trim().replace(/ /g, '');
-	return (/^http(s)?:\/\/[\s\S]+\.[\s\S]+$/.test(url) && url.indexOf('.') > 0) ? url : false;
+	url = (url || '').trim();
+	return (/^http(s)?:\/\/[\s\S]+\.[\s\S]+$/.test(url) && url.indexOf('.') > 0) ? url : '';
 }
 var url = testUrl(process.argv[2]);
 if(!url) {
