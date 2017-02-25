@@ -2,6 +2,10 @@
 
 test the speed and performance of your site, based on https://gtmetrix.com/
 
+### install
+
+`npm install -g node-gtmetrix`
+
 ### usage
 ```
 Usage: gtmetrix [options]
