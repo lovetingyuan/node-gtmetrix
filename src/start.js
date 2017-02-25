@@ -1,7 +1,7 @@
 const config = require('./command');
 const serve = require('./serve');
 const startTest = require('./main');
-const path = require('path')
+const path = require('path');
 
 function parseArgs() {
   if (config.remote) {
@@ -12,9 +12,9 @@ function parseArgs() {
       .then(url => startTest(url));
   }
   if (config.dir) {
-    let rootPath = process.cwd()
-    if(typeof config.dir === 'string') {
-      rootPath = path.resolve(config.dir)
+    let rootPath = process.cwd();
+    if (typeof config.dir === 'string') {
+      rootPath = path.resolve(config.dir);
     }
     return serve.startServer(rootPath)
       .then(port => serve.startTunnel(port))

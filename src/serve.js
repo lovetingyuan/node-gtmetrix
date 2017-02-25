@@ -7,7 +7,7 @@ function startTunnel(port) {
   return new Promise((resolve, reject) => {
     const tunnelConnection = localtunnel(port, (err, tunnel) => {
       if (err) { reject(err); } else {
-        console.log('the tunnel url is ', tunnel.url);
+        console.log('the public url is ', tunnel.url);
         resolve(tunnel.url);
       }
     });
@@ -18,7 +18,7 @@ function startTunnel(port) {
 function startServer(rootRath = './', opts = {}) {
   return new Promise((resolve, reject) => {
     console.log('serve from ', rootRath);
-    const serve = serveStatic(rootRath);
+    const serve = serveStatic(rootRath, opts);
     const server = http.createServer((req, res) => {
       serve(req, res, finalhandler(req, res));
     });

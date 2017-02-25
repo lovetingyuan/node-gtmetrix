@@ -1,6 +1,5 @@
 const program = require('commander');
 const pkg = require('../package');
-const path = require('path');
 
 program
   .version(pkg.version)

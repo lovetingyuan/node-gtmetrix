@@ -17,7 +17,7 @@ function downloadPdf(reportUrl) {
       const fileName = `${hostname}_${timestr}.pdf`;
       mkdirp.sync(path.resolve(pdfPath));
       const pdfFilePath = path.resolve(pdfPath, fileName);
-      console.log('is downloading pdf', pdfFilePath);
+      console.log('downloading pdf...', pdfFilePath);
       const pdfWriteStream = fs.createWriteStream(pdfFilePath);
       const duplexStream = got.stream(pdfUrl).pipe(pdfWriteStream);
       duplexStream.on('error', reject).on('close', () => {
