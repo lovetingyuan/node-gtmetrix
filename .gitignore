@@ -1,2 +1,4 @@
 /node_modules
 lintreport
+/spec/public
+/spec/public2
