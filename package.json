@@ -1,10 +1,12 @@
 {
   "name": "node-gtmetrix",
-  "version": "1.1.1",
-  "description": "网站性能和速度测试",
-  "main": "./lib/gtmetrix.js",
+  "version": "2.0.0",
+  "description": "Test local site performance and show the result in the browser or a pdf file",
+  "main": "./index.js",
   "scripts": {
-    "test": "node index"
+    "lint": "node ./node_modules/eslint/bin/eslint -o lintreport -f table --fix src/*.js && cat lintreport",
+    "build": "node ./node_modules/babel-cli/bin/babel src -d lib",
+    "test": "node ./node_modules/jasmine/bin/jasmine"
   },
   "repository": {
     "type": "git",
@@ -18,10 +20,30 @@
     "performance"
   ],
   "author": "tingyuan (1932294867@qq.com)",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/lovetingyuan/node-gtmetrix/issues"
   },
   "homepage": "https://github.com/lovetingyuan/node-gtmetrix#readme",
-  "bin": { "node-gtmetrix": "./bin/gtmetrix" }
+  "bin": {
+    "gtmetrix": "./bin/gtmetrix"
+  },
+  "dependencies": {
+    "commander": "^2.9.0",
+    "finalhandler": "^1.0.0",
+    "got": "^6.7.1",
+    "localtunnel": "^1.8.2",
+    "mkdirp": "^0.5.1",
+    "opn": "^4.0.2",
+    "serve-static": "^1.11.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.23.0",
+    "babel-plugin-transform-object-assign": "^6.22.0",
+    "babel-preset-latest": "^6.22.0",
+    "eslint": "^3.16.1",
+    "eslint-config-airbnb-base": "^11.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "jasmine": "^2.5.3"
+  }
 }
