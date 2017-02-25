@@ -15,7 +15,7 @@ function startTunnel(port) {
   });
 }
 
-function startServer(rootRath = './') {
+function startServer(rootRath = './', opts = {}) {
   return new Promise((resolve, reject) => {
     console.log('serve from ', rootRath);
     const serve = serveStatic(rootRath);

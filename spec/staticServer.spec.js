@@ -10,35 +10,39 @@ describe('test get reportUrl of a public url', function() {
   var serve = require(base + '/serve')
   var got = require('got')
   it('test serve static site spec', function(done) {
-    var pageContent = 'hello world, I love you, wyh ' + (new Date).toLocaleString()
+    var pageContent = 'hello world, I love you, wyh ' + (new Date()).toLocaleString()
     mkdirp.sync('spec/public')
     fs.writeFileSync('spec/public/index.html', pageContent)
-    serve.startServer('public').then(function(port) {
-      return got('http://localhost:' + port + '?_t' + Date.now())
+    serve.startServer('spec/public').then(function(port) {
+      return got('http://localhost:' + port)
     }).then(function(res) {
-      console.log('--' + res.body + '---')
       expect(res.body).toBe(pageContent)
       done()
     }).catch(function(e) {
-      console.log(555, e)
+      done(e)
     })
   })
 
-  xit('test local tunnel NAT spec', function(done) {
+  it('test local tunnel NAT spec', function(done) {
     var pageContent = process.cwd() + process.platform
-    mkdirp.sync('spec/public2')
-    fs.writeFileSync('spec/public2/index.html', pageContent)
-    serve.startServer('public2').then(function(port) {
+    mkdirp.sync('spec/public')
+    fs.writeFileSync('spec/public/index2.html', pageContent)
+    serve.startServer('spec/public', {
+      index: 'index2.html'
+    }).then(function(port) {
       return serve.startTunnel(port)
     }).then(function(tunnelUrl) {
-      console.log(tunnelUrl)
-      return got(tunnelUrl, {timeout: 50000})
+      return new Promise(function(resolve) {
+        setTimeout(function() {
+          resolve(got(tunnelUrl))
+        }, 5000)
+      })
     }).then(function(res) {
       expect(tunnelUrl).toMatch(/^https:\/\/[a-z]{10}\/localtunnel\.me$/)
       expect(res.body).toBe(pageContent)
       done()
     }).catch(function(e) {
-      console.log(444, e)
+      done(e)
     })
   })
   afterAll(function() {

@@ -1,5 +1,5 @@
 var base = '../lib';
-xdescribe('test get reportUrl of a public url', function() {
+describe('test get reportUrl of a public url', function() {
   var originalTimeout;
   beforeAll(function() {
     originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL
