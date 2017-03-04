@@ -7,11 +7,9 @@ function getCommandConfig(args) {
   if (config) {
     return config;
   }
-  let prog = program.version(pkg.version);
-  if (process.env.NODE_ENV !== 'test') {
-    prog = prog.command('gtmetrix');
-  }
-  prog
+
+  program
+    .version(pkg.version)
     .description(pkg.description)
     .option('-r, --remote <url>', 'will test the given [url]',
       /^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/)

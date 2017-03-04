@@ -1,6 +1,6 @@
 {
   "name": "node-gtmetrix",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Test local site performance and show the result in the browser or a pdf file",
   "main": "./index.js",
   "scripts": {
