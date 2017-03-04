@@ -3,7 +3,7 @@ describe('test get reportUrl of a public url', function() {
   var originalTimeout;
   beforeAll(function() {
     originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = 60000
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = 90000
   })
   var fetchReportUrl = require(base + '/reporter')
   var BASEURL = require(base + '/enum').BASEURL

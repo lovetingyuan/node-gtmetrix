@@ -1,12 +1,12 @@
 {
   "name": "node-gtmetrix",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Test local site performance and show the result in the browser or a pdf file",
   "main": "./index.js",
   "scripts": {
-    "lint": "node ./node_modules/eslint/bin/eslint -o lintreport -f table --fix src/*.js && cat lintreport",
+    "lint": "node ./node_modules/eslint/bin/eslint -o lintreport -f table --fix src/*.js",
     "build": "node ./node_modules/babel-cli/bin/babel src -d lib",
-    "test": "node ./node_modules/jasmine/bin/jasmine"
+    "test": "set NODE_ENV=test&&node ./node_modules/jasmine/bin/jasmine"
   },
   "repository": {
     "type": "git",

@@ -4,10 +4,9 @@ const got = require('got');
 const opn = require('opn');
 const mkdirp = require('mkdirp');
 const { BASEURL } = require('./enum');
-const program = require('./command');
 const fetchReportUrl = require('./reporter');
 
-function downloadPdf(reportUrl) {
+function downloadPdf(reportUrl, program) {
   return new Promise((resolve, reject) => {
     const pdfPath = program.pdf === true ? './' : program.pdf;
     try {
@@ -17,11 +16,11 @@ function downloadPdf(reportUrl) {
       const fileName = `${hostname}_${timestr}.pdf`;
       mkdirp.sync(path.resolve(pdfPath));
       const pdfFilePath = path.resolve(pdfPath, fileName);
-      console.log('downloading pdf...', pdfFilePath);
+      console.log('downloading the reporter, please wait a moment...');
       const pdfWriteStream = fs.createWriteStream(pdfFilePath);
       const duplexStream = got.stream(pdfUrl).pipe(pdfWriteStream);
       duplexStream.on('error', reject).on('close', () => {
-        console.log('the reporter is saved to ', pdfFilePath);
+        console.log('reporter is saved to', pdfFilePath);
         resolve(program.open ? opn(pdfFilePath) : pdfFilePath);
       });
     } catch (e) {
@@ -30,16 +29,19 @@ function downloadPdf(reportUrl) {
   });
 }
 
-function startTest(addr) {
+function startTest(addr, program) {
   return fetchReportUrl(addr)
     .then((reportUrl) => {
       if (program.browser) {
-        if (program.open) { return opn(reportUrl); }
-
-        console.log(`please visit ${reportUrl}`);
+        if (program.open) {
+          return opn(reportUrl);
+        }
+        console.log(`please visit ${reportUrl}, thanks!`);
         return reportUrl;
       }
-      if (program.pdf) { return downloadPdf(reportUrl); }
+      if (program.pdf) {
+        return downloadPdf(reportUrl, program);
+      }
       return reportUrl;
     });
 }
