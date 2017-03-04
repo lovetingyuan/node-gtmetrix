@@ -22,7 +22,7 @@ function getCommandConfig(args) {
     .option('-n, --no-open', 'do not open browser or pdf automatically, used with option \'-p\'')
     .parse(args || process.argv);
 
-  if (program.args.length) {
+  if (program.args && program.args.length) {
     program.outputHelp();
     process.exit(1);
   }
