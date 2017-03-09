@@ -2,6 +2,9 @@
 
 test the speed and performance of your site, based on https://gtmetrix.com/
 
+[![Version](https://img.shields.io/npm/v/node-gtmetrix.svg "version")](https://www.npmjs.com/package/node-gtmetrix)
+[![depend](https://david-dm.org/lovetingyuan/node-gtmetrix/status.svg "dependencies")](https://david-dm.org/lovetingyuan/node-gtmetrix)
+
 ### install
 
 `npm install -g node-gtmetrix`
